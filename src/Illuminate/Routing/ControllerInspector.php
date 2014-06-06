@@ -85,6 +85,11 @@ class ControllerInspector {
 
 		$uri = $this->addUriWildcards($plain = $this->getPlainUri($name, $prefix));
 
+		if(in_array($name, $this->verbs)){
+			$verb = $name;
+			$uri = $this->addUriWildcards($prefix);
+		}
+
 		return compact('verb', 'plain', 'uri');
 	}
 
