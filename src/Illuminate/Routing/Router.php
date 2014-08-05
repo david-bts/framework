@@ -266,6 +266,7 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 			$prepended = $this->prependGroupUses($controller);
 		}
 
+
 		$routable = $this->getInspector()->getRoutable($prepended, $uri);
 
 		// When a controller is routed using this method, we use Reflection to parse
@@ -275,6 +276,10 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 		{
 			foreach ($routes as $route)
 			{
+				if(!isset($names[$method])){
+
+					$names[$method] = $route['verb'].".".str_replace("/", ".", str_replace("/{one?}/{two?}/{three?}/{four?}/{five?}", "", $route['uri']));
+				}
 				$this->registerInspected($route, $controller, $method, $names);
 			}
 		}
