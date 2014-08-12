@@ -277,7 +277,6 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 			foreach ($routes as $route)
 			{
 				if(!isset($names[$method])){
-
 					$names[$method] = $route['verb'].".".str_replace("/", ".", str_replace("/{one?}/{two?}/{three?}/{four?}/{five?}", "", $route['uri']));
 				}
 				$this->registerInspected($route, $controller, $method, $names);
